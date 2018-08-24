@@ -1,0 +1,294 @@
+header {
+    position: relative;
+    background-color: black;
+    height: 75vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  header .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .customBtn{
+      display: block;
+      position: relative;
+      height: 4em;
+      width: 12em;
+  }
+
+  .customBtn:focus{
+    height: 4em;
+    width: 12em;
+    opacity: 0.4;
+}
+
+/* designs */
+
+#designs{
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.design-text{
+    padding-top: 8em;
+    padding-bottom: 3em;
+}
+  
+/* horizontal slider  */
+
+@media (min-width: 768px) {
+
+    /* show 3 items */
+    .carousel-inner .active,
+    .carousel-inner .active + .carousel-item,
+    .carousel-inner .active + .carousel-item + .carousel-item,
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item  {
+        display: block;
+    }
+    
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+
+}
+
+ /* Bootstrap Lightbox using Modal */
+
+#profile-grid { overflow: auto; white-space: normal; } 
+#profile-grid .profile { padding-bottom: 40px; }
+#profile-grid .panel { padding: 0 }
+#profile-grid .panel-body { padding: 15px }
+#profile-grid .profile-name { font-weight: bold; }
+#profile-grid .thumbnail {margin-bottom:6px;}
+#profile-grid .panel-thumbnail { overflow: hidden; }
+#profile-grid .img-rounded { border-radius: 4px 4px 0 0;}
+
+/* design end */
+
+/* ideas */
+
+#ideas{
+    background: linear-gradient( to right, rgb(133, 126, 130), rgb(167, 153, 175));
+    padding-bottom: 4em;
+}
+
+.img-container{
+    max-width: 1300px !important;
+}
+
+.ideas-text-container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: antiquewhite;
+    margin-top: 5em;
+}
+
+.ideas-text-container > h2 {
+    font-size: 50px;
+    font-weight: lighter;
+}
+
+.ideas-text-container > p {
+    font-size: 20px;
+    font-weight: lighter;
+    color: rgb(209, 199, 199)
+}
+
+.ideas-text-container > button {
+    width: 8em;
+    height: 3em;
+    font-size: 24px;
+    font-weight: lighter;
+    background-color: rgb(230, 219, 204);
+    color: rgb(44, 43, 43);
+}
+/* ideas end */
+
+/* construct */
+
+.rounded-circle{
+    border: 1px solid black
+}
+
+/* construct end */
+
+/* intro */
+
+#intro{
+    background: linear-gradient( to right, rgb(95, 85, 97), rgb(107, 112, 116));
+    width: 100%;
+    height: 30em;;
+}
+
+.intro-sub-container{
+    margin: 0 auto;
+    padding-top: 8em;
+}
+
+.intro-sub-container  p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 4em;
+    color: white;
+}
+
+/* intro end */
+
+/* build */
+
+#build{
+    background: linear-gradient( to right, rgb(124, 120, 141), rgb(170, 177, 153));
+    width: 100%;
+    height: 20em;
+    padding-top: 6em;
+}
+
+#build > button {
+    width: 8em;
+    height: 3em;
+    font-size: 24px;
+    font-weight: lighter;
+    background-color: rgb(230, 219, 204);
+    color: rgb(44, 43, 43);
+}
+
+/* build end */
+
+/* footer */
+
+footer {
+    padding: 60px 0;
+}
+
+#footer {
+    background: #007b5e !important;
+}
+
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+#footer ul.social li{
+	padding: 3px 0;
+}
+#footer ul.social li a i {
+    margin-right: 5px;
+	font-size:25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+#footer ul.social li a,
+#footer ul.quick-links li a{
+	color:#ffffff;
+}
+#footer ul.social li a:hover{
+	color:#eeeeee;
+}
+#footer ul.quick-links li{
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+#footer ul.quick-links li a i{
+	margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+footer .line{
+    border: 1px solid rgb(158, 154, 154);
+    width: 30%;
+}
+/* footer end */
