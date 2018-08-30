@@ -1,0 +1,257 @@
+<html>
+
+<head>
+    <script src="https://cdn.rawgit.com/konvajs/konva/2.2.1/konva.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+    <title>closet customize</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F0F0F0;
+        }
+
+        small {
+            font-weight: bold
+        }
+
+        hr {
+            height: 1px;
+            /* Set the hr color */
+            color: #333;
+            /* old IE */
+            background-color: #333;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row" style="margin: 10px">
+
+        <div class="col-md-4" style="overflow: scroll;height:500px" id="left_panel">
+            <div id="closet_dimension_select">
+                <h4>CLOSET DIMENSIONS</h4>
+                <div class="form-group row">
+                    <label>width(px):</label>
+                    <small>width must be between 54' inches to 108' inches</small>
+                    <input class="form-control col-md-3" type="number" value="54" id="width_input" min="54" max="108">
+                    <br>
+                    <label>height(px):</label>
+                    <small>height must be between 48' inches to 108' inches</small>
+                    <input class="form-control col-md-3" type="number" value="48" id="height_input" min="48" max="108">
+                    <br>
+                    <button class="btn btn-primary" onclick="closet_dimension()">draw</button>
+                    <small class=" alert-info">1 inch is 8 pixel here</small>
+                    <br>
+                    <button class="btn-primary btn form-control" style="display: none" id="proceed_1" onclick="proceed_1()">Proceed To Select front Door Structure</button>
+                </div>
+                <hr>
+            </div>
+
+
+            <div id="doors_option_select" style="display:none ; ">
+                <h4>Select Doors Options</h4>
+                <div class="row">
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Left Section</h4>
+                        <div>
+                            <small>TYPE:</small>
+                            <select id="door_left_select" onchange="door_change('left')" style="width:100px">
+                                <option value="full">Full Door</option>
+                                <option value="half-1">Door with one drawer</option>
+                                <option value="half-2">Door with two drawers </option>
+
+
+                            </select>
+                            <br>
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Mid Section</h4>
+                        <div>
+                            <small>TYPE:</small>
+                            <select id="door_mid_select" onchange="door_change('mid')" style="width:100px">
+                                <option value="full">Full Door</option>
+                                <option value="half-1">Door with one drawer</option>
+                                <option value="half-2">Door with two drawers </option>
+
+
+                            </select>
+                            <br>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Right Section</h4>
+                        <div>
+                            <small>TYPE:</small>
+                            <select id="door_right_select" onchange="door_change('right')" style="width:100px">
+                                <option value="full">Full Door</option>
+                                <option value="half-1">Door with one drawer</option>
+                                <option value="half-2">Door with two drawers </option>
+
+
+                            </select>
+                            <br>
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <button class="btn-primary btn form-control" id="proceed_2" onclick="proceed_2()">Proceed To Select Indoor View of closet</button>
+
+                </div>
+            </div>
+
+            <div id="inside_view_options" style="display: none">
+                <h4>SELECT DRAWERS FOR EACH SECTIONS</h4>
+                <div class="row">
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Left Section</h4>
+                        <div>
+                            <small>hanger portion:</small>
+                            <select id="hanger_left" onchange="hanger_change('left')">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+
+                            </select>
+                            <br>
+                            <small>hanger height:(in inches') </small>
+                            <input type="number" min="20" max="60" style="width: 40px"
+                                value="20" onchange="hanger_height_change(this,'left')" />
+
+
+                        </div>
+                        <hr>
+                        <div>
+                            <small>Add portion:</small>
+                            <button onclick="drawer_add('left')">Drawer+</button>
+                            <button onclick="shelf_add('left')">Shelf+</button>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Mid Section</h4>
+                        <div>
+                            <small>hanger portion:</small>
+                            <select id="hanger_mid" onchange="hanger_change('mid')">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+
+                            </select>
+                            <br>
+                            <small>hanger height:(in inches') </small>
+                            <input type="number" min="20" max="60" style="width: 40px"
+                                value="20" onchange="hanger_height_change(this,'mid')" />
+
+
+                        </div>
+                        <hr>
+                        <div>
+                            <small>Add portion:</small>
+                            <button onclick="drawer_add('mid')">Drawer+</button>
+                            <button onclick="shelf_add('mid')">Shelf+</button>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-md-4" style="border:1px solid black;padding: 5px;">
+                        <h4>Right Section</h4>
+                        <div>
+                            <small>hanger portion:</small>
+                            <select id="hanger_right" onchange="hanger_change('right')">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+
+                            </select>
+                            <br>
+                            <small>hanger height:(in inches') </small>
+                            <input type="number" min="20" max="60" style="width: 40px"
+                                value="20" onchange="hanger_height_change(this,'right')" />
+
+
+                        </div>
+                        <hr>
+                        <div>
+                            <small>Add portion:</small>
+                            <button onclick="drawer_add('right')">Drawer+</button>
+                            <button onclick="shelf_add('right')">Shelf+</button>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    <button class="btn btn-primary" onclick="proceed_3()">Proceed for Details</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8" id="right_panel">
+
+            <div id="select_side" style="display:none">
+                <button onclick="show_front_side()">FRONT SIDE</button>
+                <button onclick="show_inner_side()">INNER SIDE</button>
+                <button style="display:none;margin-left:50px" id="summary-btn" onclick="summarize()">SUMMARIZE</button>
+            </div>
+            <div id="canvas" style="overflow-y: scroll;height:600px"></div>
+
+
+
+        </div>
+        <div id="summary_div" style="display: none">
+            <table id="summary" border="1px solid black"></table>
+        </div>
+
+    
+    </div>
+
+
+    <script src="../js/closet.js">
+
+    </script>
+</body>
+
+</html>
