@@ -1,3 +1,7 @@
+.nav-bar-center{
+    margin-right: 12em; 
+}
+
 #home-header {
     position: relative;
     background-color: black;
@@ -315,4 +319,53 @@ footer .line{
     margin-bottom: 2px;
     padding-left: 12px;
     color: rgb(161, 148, 148)
+}
+
+/* Product & Feature Page  */
+
+#header-img{
+    background-image: url(../assets/img/room-1336497_1280.jpg);
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 585px;
+}
+
+/* How to work page */
+.work-left-heading{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+}
+
+.work-right-heading{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.work-heading{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: lighter;
+    margin-top: 1.5em;
+}
+
+.right-line{
+    border-right: 1px solid rgb(112, 108, 108);
+}
+
+.right-line p > a {
+    text-decoration: none;
+}
+
+.installation-container{
+    padding-right: 0px !important;
+    padding-left: 0px !important; 
+    margin-bottom: 8em;
+    margin-top: 6em;
+}
+
+.install-img-container{
+    margin: 10px 0px 10px 0px;
 }

@@ -1,0 +1,7 @@
+creating custom closet steps        done
+step 1 : height width and dept
+step 2 : customize outside view of closet
+step 3 : customize inside view of closet
+step 4 : Pricing
+step 5 : Check out
+step 6 : Final Delivery / Payment

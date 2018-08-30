@@ -1,0 +1,51 @@
+/* FAQ Page */
+
+.faq-container{
+    /* margin-left: 3em !important;
+    margin-right: 3em !important; */
+    margin-bottom: 5em;
+}
+
+@media (max-width:602px) {
+    .faq-container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+}
+
+.faq-left-container{
+    margin-top: 6em;
+}
+
+/* .faq-right-container{
+    padding-left: 3em !important;
+} */
+
+.faq-design, .faq-order{
+    display: block;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* margin-left: 2em; */
+}
+
+.faq-heading{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: lighter;
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+}
+
+.faq-sub-heading{
+    margin-bottom: 1.1em;
+}
+
+.faq-info-heading{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.faq-info-detail{
+    color: rgb(68, 66, 66);
+}
