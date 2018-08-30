@@ -1083,7 +1083,7 @@ function summarize(){
    
    </tr>
     
-    <tr><th colspan='2'>LEFT SECTION</th><th colspan='2'>MID SECTION</th><th colspan='2'>RIGHT SECTION</th></tr>
+    <tr><th scope="col" colspan='2'>LEFT SECTION</th><th colspan='2'>MID SECTION</th><th colspan='2'>RIGHT SECTION</th></tr>
     <tr><th> Door</th><td>`+summary.door_left+`</td><th> Door</th><td>`+summary.door_mid+`</td><th> Door</th><td>`+summary.door_right+`</td></tr>
     <tr><th> Hanger</th><td>`+summary.hanger_left+`</td><th> Hanger</th><td>`+summary.hanger_mid+`</td><th> Hanger</th><td>`+summary.hanger_right+`</td></tr>
     <tr><th> Drawer</th><td>`+summary.left_drawer+`</td><th> Drawer</th><td>`+summary.mid_drawer+`</td><th> Drawer</th><td>`+summary.right_drawer+`</td></tr>
