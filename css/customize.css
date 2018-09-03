@@ -23,3 +23,26 @@ hr {
 .fd-btn, .in-btn {
     font-size: 12px;
 }
+
+/* closet select */
+
+#closet-select{
+    margin: 4em 0em 4em 0em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.closet-select-heading{
+    margin: 1em 0em 1em 0em;
+}
+
+.closet-select-option{
+    margin: 0.5em 0em 1em 0em;
+    text-transform: capitalize;
+    font-weight: lighter;
+}
+
+.closet-select-btn{
+    /* font-size: 20px !important; */
+    width: 5.5em;
+    height: 2.5em;
+}
