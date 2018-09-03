@@ -285,26 +285,29 @@ function closet_dimension() {
                 strokeWidth: 1,
                 id: 'section_left'
             });
-            left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 3) - 4 } };
+            left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 4) - 4 } };
              section_mid = section_left.clone({
                 x: (width /4 ) + 4,
                 id: 'section_mid'
     
             });
+            mid_section_object[0] = { attrs: { x: (width /4 ) + 6, y: 32, height: 0, width: (width / 4) - 4 } };
+
             section_mid_2 = section_left.clone({
                 x: (width /2 ) + 6,
                 id: 'section_mid_2'
     
-            })
+            });
+            mid_2_section_object[0] = { attrs: { x:  (width /2 ) + 8, y: 32, height: 0, width: (width / 4) - 4 } };
+
             
-            mid_section_object[0] = { attrs: { x: (width / 3) + 6, y: 32, height: 0, width: (width / 3) - 4 } };
              section_right = section_left.clone({
                 x: (3 * (width / 4)) + 8,
                 id: 'section_right'
     
             })
            
-            right_section_object[0] = { attrs: { x: (2 * (width / 3)) + 8, y: 32, height: 0, width: (width / 3) - 4 } };
+            right_section_object[0] = { attrs: { x:(3 * (width / 4)) + 10, y: 32, height: 0, width: (width / 4) - 4 } };
     
             layer.add(closet);
             layer.add(section_left);
@@ -469,6 +472,16 @@ function hanger_change(side) {
         }
             section = mid_section_object;
             break;
+            case 'mid_2':
+            if(hanger==="true"){
+                summary.hanger_mid_2 = "hanger height 20 inches";
+            }
+            else{
+               summary.hanger_mid_2 = "no hanger";
+    
+            }
+                section = mid_2_section_object;
+                break;
         case 'right':
         if(hanger==="true"){
             summary.hanger_right = "hanger height 20 inches";
@@ -496,6 +509,12 @@ function hanger_change(side) {
                 width: section[0].attrs.width,
                 height: 80
             });
+            hanger.on("click", function () {
+                //  console.log("occupied or not:", this.attrs.occupied);
+                if(step_3){
+                    images_populate('hanger');
+                }
+              })
             section.push(hanger);
             hanger.on("mousedown", function () {
                 alert(hanger.attrs.id);
@@ -511,7 +530,7 @@ function hanger_change(side) {
         else {
             document.getElementById('hanger_' + side).selectedIndex = 0;
             document.getElementById('hanger_height_' + side).value = '20';
-            console.log("there is hurdle");
+            alert("there is hurdle ,please remove drawers etc then put hanger");
         }
 
 
@@ -525,7 +544,7 @@ function hanger_change(side) {
         }), 1);
 
         var hanger = stage.find("#hanger_" + side)[0];
-        console.log("destroying hanger left", hanger);
+        console.log("destroying hanger ", hanger);
         hanger.destroy();
 
         layer.draw();
@@ -550,6 +569,13 @@ function hanger_height_change(e, side) {
             not_available = na_mid;
 
             break;
+            case 'mid_2':
+            summary.hanger_mid_2 = "hanger height "+value/4+" inches";
+    
+                obj = mid_2_section_object;
+                not_available = na_mid_2;
+    
+                break;
         case 'right':
         summary.hanger_right = "hanger height "+value/4+" inches";
 
@@ -601,6 +627,11 @@ function drawer_add(side) {
         case 'mid':
             section = mid_section_object;
             not_available = na_mid;
+
+            break;
+            case 'mid_2':
+            section = mid_2_section_object;
+            not_available = na_mid_2;
 
             break;
         case 'right':
@@ -678,6 +709,11 @@ function shelf_add(side) {
         case 'mid':
             section = mid_section_object;
             not_available = na_mid;
+
+            break;
+            case 'mid_2':
+            section = mid_2_section_object;
+            not_available = na_mid_2;
 
             break;
         case 'right':
@@ -1029,7 +1065,10 @@ function proceed_2() {
 }
 function proceed_3() {
     // var json = stage.toJSON();
+
     document.getElementById("left_panel").style.display = "none";
+    let r_p = document.getElementById("right_panel");
+    r_p.setAttribute("class","col-md-12");
     document.getElementById("summary-btn").style.display = "block";
     step_3 = true;
     // console.log(json);   
