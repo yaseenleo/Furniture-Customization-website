@@ -262,7 +262,7 @@
 
 
                             </div>
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div id="drawer_mid_container" class="col-md-3" style="border:1px solid black;padding: 5px;">
                                 <h6>Mid Section</h6>
                                 <div>
                                     <small>hanger portion:</small>
@@ -291,7 +291,7 @@
 
                             </div>
 
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div id="drawer_mid_2_container" class="col-md-3" style="border:1px solid black;padding: 5px;">
                                 <h6>Mid 2 Section</h6>
                                 <div>
                                     <small>hanger portion:</small>
@@ -433,10 +433,16 @@ document.getElementById("closet-select").style.display="none";
       doors = 2;
    document.getElementById("door_select_mid_container").style.display="none";
    document.getElementById("door_select_mid_2_container").style.display="none";
+    document.getElementById("drawer_mid_container").style.display="none";
+    document.getElementById("drawer_mid_container").setAttribute("class" ,"col-md-6");
+    document.getElementById("drawer_mid_2_container").style.display="none";
+    document.getElementById("drawer_mid_2_container").setAttribute("class" ,"col-md-6");
+
 
       break;
       case 3:
       doors = 3
+    document.getElementById("drawer_mid_2_container").style.display="none";
       document.getElementById("door_select_mid_2_container").style.display="none";
 
       break;
