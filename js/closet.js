@@ -1,14 +1,17 @@
-
+var doors = 3;
 var width = window.innerWidth;
 var height = window.innerHeight;
 var left_section_object = [];
 var mid_section_object = [];
+var mid_2_section_object = [];
 var right_section_object = [];
 var step_3 = false;
 var summary = {};
 summary.hanger_left = "no hanger";
 summary.hanger_mid = "no hanger";
 summary.hanger_right = "no hanger";
+document.getElementById("left_panel").style.display="none";
+document.getElementById("right_panel").style.display="none";
 
 
 
@@ -54,6 +57,7 @@ layer_front.draw();
 show_front_side();
 var na_left = 10000; // not available region left
 var na_mid = 10000; // not available region mid
+var na_mid_2 = 10000;//not available region mid 2
 var na_right = 10000; // not available region right
 
 
@@ -168,8 +172,12 @@ function closet_dimension() {
     var inches_to_pixel = 4;
     var width = document.getElementById("width_input").value * inches_to_pixel;
     var height = document.getElementById("height_input").value * inches_to_pixel;
-    summary.width= width/4;
-    summary.height= height/4;
+   // var depth = document.getElementById("depth_input").value * inches_to_pixel;
+
+    summary.width= width/inches_to_pixel;
+    summary.height= height/inches_to_pixel;
+  //  summary.depth= depth/inches_to_pixel;
+
     summary.doors = 3;
     
 
@@ -188,63 +196,143 @@ function closet_dimension() {
             id: "closet",
 
         });
-        var section_left = new Konva.Rect({
-            x: 2,
-            y: closet.attrs.y + 2,
-            width: width / 3,
-            height: height,
-            fill: '#eeeedd',
-            stroke: 'grey',
-            strokeWidth: 1,
-            id: 'section_left'
-        });
-        left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 3) - 4 } };
-        var section_mid = new Konva.Rect({
-            x: (width / 3) + 4,
-            y: closet.attrs.y + 2,
-            width: width / 3,
-            height: height,
-            fill: '#eeeedd',
-            stroke: 'grey',
-            strokeWidth: 1,
-            id: 'section_mid'
+        var section_left ,section_mid,section_mid_2, section_right;
+        switch(doors){
+            case 2:
+            closet.attrs.width = width +6;
+            section_left = new Konva.Rect({
+                x: 2,
+                y: closet.attrs.y + 2,
+                width: width / 2,
+                height: height,
+                fill: '#eeeedd',
+                stroke: 'grey',
+                strokeWidth: 1,
+                id: 'section_left'
+            });
+            left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 2) - 4 } };
 
-        });
-        mid_section_object[0] = { attrs: { x: (width / 3) + 6, y: 32, height: 0, width: (width / 3) - 4 } };
+            section_right = section_left.clone({
+                x:(width/2)+4,
+                id: 'section_right'
 
-        var section_right = new Konva.Rect({
-            x: (2 * (width / 3)) + 6,
-            y: closet.attrs.y + 2,
-            width: width / 3,
-            height: height,
-            fill: '#eeeedd',
-            stroke: 'grey',
-            strokeWidth: 1,
-            id: 'section_right'
+            })
+            right_section_object[0] = { attrs: { x: (width/2)+6, y: 32, height: 0, width: (width / 2) - 4 } };
 
-        });
-        right_section_object[0] = { attrs: { x: (2 * (width / 3)) + 8, y: 32, height: 0, width: (width / 3) - 4 } };
+            layer.add(closet);
+            layer.add(section_left);
+            layer.add(section_right);
+            layer_front.add(closet.clone({ id: 'closet_clone' }));
+            layer_front.add(section_left.clone({ id: 'section_left_clone' }));
+            layer_front.add(section_right.clone({ id: 'section_right_clone' }));
+    
+            door_change("left");
+            door_change("right");
+            layer.draw();
+            layer_front.draw();
+            break;
+            case 3:
+             section_left = new Konva.Rect({
+                x: 2,
+                y: closet.attrs.y + 2,
+                width: width / 3,
+                height: height,
+                fill: '#eeeedd',
+                stroke: 'grey',
+                strokeWidth: 1,
+                id: 'section_left'
+            });
+            left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 3) - 4 } };
+             section_mid = section_left.clone({
+                x: (width / 3) + 4,
+                id: 'section_mid'
+    
+            })
+            
+            mid_section_object[0] = { attrs: { x: (width / 3) + 6, y: 32, height: 0, width: (width / 3) - 4 } };
+             section_right = section_left.clone({
+                x: (2 * (width / 3)) + 6,
+                id: 'section_right'
+    
+            })
+           
+            right_section_object[0] = { attrs: { x: (2 * (width / 3)) + 8, y: 32, height: 0, width: (width / 3) - 4 } };
+    
+            layer.add(closet);
+            layer.add(section_left);
+            layer.add(section_mid);
+            layer.add(section_right);
+            layer_front.add(closet.clone({ id: 'closet_clone' }));
+            layer_front.add(section_left.clone({ id: 'section_left_clone' }));
+            layer_front.add(section_mid.clone({ id: 'section_mid_clone' }));
+            layer_front.add(section_right.clone({ id: 'section_right_clone' }));
+    
+            door_change("left");
+            door_change("mid");
+            door_change("right");
+            layer.draw();
+            layer_front.draw();
+            break;
+            case 4:
+            closet.attrs.width = width + 10;
+            section_left = new Konva.Rect({
+                x: 2,
+                y: closet.attrs.y + 2,
+                width: width / 4,
+                height: height,
+                fill: '#eeeedd',
+                stroke: 'grey',
+                strokeWidth: 1,
+                id: 'section_left'
+            });
+            left_section_object[0] = { attrs: { x: 4, y: 32, height: 0, width: (width / 3) - 4 } };
+             section_mid = section_left.clone({
+                x: (width /4 ) + 4,
+                id: 'section_mid'
+    
+            });
+            section_mid_2 = section_left.clone({
+                x: (width /2 ) + 6,
+                id: 'section_mid_2'
+    
+            })
+            
+            mid_section_object[0] = { attrs: { x: (width / 3) + 6, y: 32, height: 0, width: (width / 3) - 4 } };
+             section_right = section_left.clone({
+                x: (3 * (width / 4)) + 8,
+                id: 'section_right'
+    
+            })
+           
+            right_section_object[0] = { attrs: { x: (2 * (width / 3)) + 8, y: 32, height: 0, width: (width / 3) - 4 } };
+    
+            layer.add(closet);
+            layer.add(section_left);
+            layer.add(section_mid);
+            layer.add(section_mid_2);
+            layer.add(section_right);
+            layer_front.add(closet.clone({ id: 'closet_clone' }));
+            layer_front.add(section_left.clone({ id: 'section_left_clone' }));
+            layer_front.add(section_mid.clone({ id: 'section_mid_clone' }));
+            layer_front.add(section_mid_2.clone({ id: 'section_mid_2_clone' }));
 
+            layer_front.add(section_right.clone({ id: 'section_right_clone' }));
+    
+            door_change("left");
+            door_change("mid");
+            door_change("mid_2");
 
+            door_change("right");
+            layer.draw();
+            layer_front.draw();
+
+            break;
+        }
+       
         // add the shape to the layer
 
 
-        layer.add(closet);
-        layer.add(section_left);
-        layer.add(section_mid);
-        layer.add(section_right);
-        layer_front.add(closet.clone({ id: 'closet_clone' }));
-        layer_front.add(section_left.clone({ id: 'section_left_clone' }));
-        layer_front.add(section_mid.clone({ id: 'section_mid_clone' }));
-        layer_front.add(section_right.clone({ id: 'section_right_clone' }));
-
-        door_change("left");
-        door_change("mid");
-        door_change("right");
-        layer.draw();
-        layer_front.draw();
-        console.log(stage.find('#closet_clone')[0])
-
+     
     }
     else {
         //devaring old closet //
@@ -663,7 +751,7 @@ function shelf_add(side) {
 
 
 function door_change(side) {
-    var value = document.getElementById("door_" + side + "_select").value;
+    var value = document.getElementById("door_" + side + "_select").value ? document.getElementById("door_" + side + "_select").value : 'full';
     var section = stage.find("#section_" + side)[0];
     var section_outside = stage.find("#section_" + side + "_clone")[0];
    
@@ -712,6 +800,11 @@ function door_change(side) {
                     summary.door_mid ="full Door";
 
                     break;
+                 case "mid_2":
+                    na_mid_2 = 10000;
+                    summary.door_mid_2 ="full Door";
+
+                    break;
                 case "right":
                     na_right = 10000;
                     summary.door_right ="full Door";
@@ -744,6 +837,11 @@ function door_change(side) {
             case "mid":
                 na_mid = door.attrs.y + door.attrs.height;
                 summary.door_mid = "Door and a outside Drawer"
+
+                break;
+          case "mid_2":
+                na_mid_2 = door.attrs.y + door.attrs.height;
+                summary.door_mid_2 = "Door and a outside Drawer"
 
                 break;
             case "right":
@@ -856,6 +954,11 @@ function door_change(side) {
                 summary.door_mid = "Door and Two outside Drawers"
 
                 break;
+                case "mid_2":
+                na_mid_2 = door.attrs.y + door.attrs.height;
+                summary.door_mid_2 = "Door and Two outside Drawers"
+
+                break;
             case "right":
                 na_right = door.attrs.y + door.attrs.height;
                 summary.door_right = "Door and Two outside Drawers"
@@ -896,6 +999,8 @@ function door_change(side) {
             });
     console.log("not available left", na_left);
     console.log("not available mid", na_mid);
+    console.log("not available mid", na_mid_2);
+
     console.log("not available right", na_right);
 
 }

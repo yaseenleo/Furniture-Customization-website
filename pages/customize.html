@@ -73,17 +73,17 @@
 
                     <div class="col-md-4 col-xsm-4">
                         <h4 class="closet-select-option">Two door closet</h4>
-                        <button class="btn btn-secondary closet-select-btn" onClick="twoDoor()">Select</button>
+                        <button class="btn btn-secondary closet-select-btn" onClick="door_select(2)">Select</button>
                     </div>
 
                     <div class="col-md-4 col-xsm-4">
                         <h4 class="closet-select-option">Three door closet</h4>
-                        <button class="btn btn-secondary closet-select-btn" onClick="ThreeDoor()">Select</button>
+                        <button class="btn btn-secondary closet-select-btn" onClick="door_select(3)">Select</button>
                     </div>
 
                     <div class="col-md-4 col-xsm-4">
                         <h4 class="closet-select-option">Four door closet</h4>
-                        <button class="btn btn-secondary closet-select-btn" onClick="fourDoor()">Select</button>
+                        <button class="btn btn-secondary closet-select-btn" onClick="door_select(4)">Select</button>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
                     <div id="doors_option_select" style="display:none ; ">
                         <h4>Select Doors Options</h4>
                         <div class="row">
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div class="col-md-3" style="border:1px solid black;padding: 5px;" id="door_select_left_container">
                                 <h6>Left Section</h6>
                                 <div>
                                     <small>TYPE:</small>
@@ -184,7 +184,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div class="col-md-3" style="border:1px solid black;padding: 5px;" id="door_select_mid_container">
                                 <h6>Mid Section</h6>
                                 <div>
                                     <small>TYPE:</small>
@@ -199,11 +199,11 @@
 
                             </div>
 
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div class="col-md-3" style="border:1px solid black;padding: 5px;" id="door_select_mid_2_container">
                                 <h6>Mid 2 Section</h6>
                                 <div>
                                     <small>TYPE:</small>
-                                    <select id="door_mid_2_select" onchange="door_change('mid')" style="width:100px">
+                                    <select id="door_mid_2_select" onchange="door_change('mid_2')" style="width:100px">
                                         <option value="full">Full Door</option>
                                         <option value="half-1">Door with one drawer</option>
                                         <option value="half-2">Door with two drawers </option>
@@ -214,7 +214,7 @@
 
                             </div>
 
-                            <div class="col-md-3" style="border:1px solid black;padding: 5px;">
+                            <div class="col-md-3" style="border:1px solid black;padding: 5px;" id="door_select_right_container">
                                 <h6>Right Section</h6>
                                 <div>
                                     <small>TYPE:</small>
@@ -421,7 +421,31 @@
 
 
 </body>
+<script>
+    
+function door_select(num){
+    document.getElementById("left_panel").style.display="block";
+document.getElementById("right_panel").style.display="block";
+document.getElementById("closet-select").style.display="none";
 
+    switch(num){
+      case 2:
+      doors = 2;
+   document.getElementById("door_select_mid_container").style.display="none";
+   document.getElementById("door_select_mid_2_container").style.display="none";
+
+      break;
+      case 3:
+      doors = 3
+      document.getElementById("door_select_mid_2_container").style.display="none";
+
+      break;
+      case 4:
+      doors= 4;
+      break
+    }
+}
+</script>
 <script src="https://cdn.rawgit.com/konvajs/konva/2.2.1/konva.min.js"></script>
 <script src="../js/closet.js"></script>
 <!-- <script src="../js/bootstrap.min.js"></script> -->
