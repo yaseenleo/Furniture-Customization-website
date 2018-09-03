@@ -512,7 +512,8 @@ function hanger_change(side) {
             hanger.on("click", function () {
                 //  console.log("occupied or not:", this.attrs.occupied);
                 if(step_3){
-                    images_populate('hanger');
+                   // images_populate('hanger');
+                   alert("no images yet");
                 }
               })
             section.push(hanger);
@@ -1093,6 +1094,10 @@ function images_populate(img) {
     destroy_images();
     var image_list = [{
         'name': 'drawers_in', 'items': [{ 'name': 'drawer-1', 'price': '400' }, { 'name': 'drawer-2', 'price': '500' },
+        { 'name': 'drawer-3', 'price': '300' }]
+    },
+    {
+        'name': 'hanger', 'items': [{ 'name': 'drawer-1', 'price': '400' }, { 'name': 'drawer-2', 'price': '500' },
         { 'name': 'drawer-3', 'price': '300' }]
     },
     {
