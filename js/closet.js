@@ -98,7 +98,7 @@ function Image_draw(imageObj, x, y, width, height, layer_, name, id, target_) {
         parent: ''
     });
 
-    img.on("")
+   
     img.on("dragstart", function () {
         this.moveToTop();
         let target = stage.find('#' + this.attrs.parent)[0];
@@ -113,7 +113,13 @@ function Image_draw(imageObj, x, y, width, height, layer_, name, id, target_) {
         layer_.draw();
 
     });
+    img.on('dblclick',function(){
+        if(this.attrs.name==='door_img' && this.attrs.parent != '')
+        {
+            images_populate('handle');
 
+        }
+    })
     img.on('mouseover', function () {
         document.body.style.cursor = 'pointer';
         layer.draw();
@@ -138,12 +144,24 @@ function Image_draw(imageObj, x, y, width, height, layer_, name, id, target_) {
                 console.log("dropping");
                 parent.attrs.occupied = true;
                 dropped = true;
-                this.attrs.height=target_height;
-                this.attrs.parent=parent.attrs.id;
-                this.position({
-                    x: target_x + ((target_width / 2) - (this.attrs.width / 2)),
-                    y: target_y + ((target_height / 2) - (this.attrs.height / 2))
-                });
+               
+                if(this.attrs.name==="handle_img"){
+                    
+                    this.position({
+                        x: target_x +target_width*.15,
+                        y: target_y + ((target_height / 2) - (this.attrs.height / 2))
+                    });
+                
+                }
+                else{
+                    this.attrs.height=target_height;
+                    this.attrs.parent=parent.attrs.id;
+                    this.position({
+                        x: target_x + ((target_width / 2) - (this.attrs.width / 2)),
+                        y: target_y + ((target_height / 2) - (this.attrs.height / 2))
+                    });
+                }
+               
                
                 layer_.draw();
 
@@ -507,19 +525,18 @@ function hanger_change(side) {
                 stroke: 'grey',
                 strokeWidth: 1,
                 width: section[0].attrs.width,
-                height: 80
+                height: 80,
+                name:'hanger'
             });
             hanger.on("click", function () {
                 //  console.log("occupied or not:", this.attrs.occupied);
                 if(step_3){
-                   // images_populate('hanger');
-                   alert("no images yet");
+                    images_populate('hanger');
+                 
                 }
               })
             section.push(hanger);
-            hanger.on("mousedown", function () {
-                alert(hanger.attrs.id);
-            })
+           
             hanger.on("mouseover", function () {
 
             })
@@ -1097,8 +1114,8 @@ function images_populate(img) {
         { 'name': 'drawer-3', 'price': '300' }]
     },
     {
-        'name': 'hanger', 'items': [{ 'name': 'drawer-1', 'price': '400' }, { 'name': 'drawer-2', 'price': '500' },
-        { 'name': 'drawer-3', 'price': '300' }]
+        'name': 'hanger', 'items': [{ 'name': 'hanger_1', 'price': '400' }, { 'name': 'hanger_2', 'price': '500' },
+        ]
     },
     {
         'name':'doors','items' : [
@@ -1109,13 +1126,25 @@ function images_populate(img) {
                 'name':'door-2','price':'1200'
             }
         ]
+    },
+    {
+        'name':'handles','items' : [
+            {
+                'name':'handle_1','price':'300'
+            },
+            {
+                'name':'handle_2','price':'200'
+            }
+        ]
     }
 
     ];
-    let components, images, layer_to_choose, name, target;
+    let components, images, layer_to_choose, name, target,width,height;
     switch (img) {
         case 'drawers_in':
             components = stage.find(".drawer");
+            width = components[0].attrs.width;
+            height = components[0].attrs.height;
             images = image_list[0].items; // zero index for drawers;
             layer_to_choose = layer;
             name = "drawer_in_img";
@@ -1124,6 +1153,8 @@ function images_populate(img) {
             break;
         case 'drawers_out':
         components = stage.find(".drawer_out");
+        width = components[0].attrs.width;
+        height = components[0].attrs.height;
         images = image_list[0].items; // zero index for drawers;
         layer_to_choose = layer_front;
         name = "drawer_out_img";
@@ -1131,13 +1162,38 @@ function images_populate(img) {
             break;
         case 'doors':
         components = stage.find(".door");
-        images = image_list[1].items; // zero index for drawers;
+        width = components[0].attrs.width;
+        height = components[0].attrs.height;
+        images = image_list[2].items; // zero index for drawers;
         layer_to_choose = layer_front;
         name = "door_img";
         target = '.door';
             break;
+            case 'hanger':
+        components = stage.find(".hanger");
+        width = components[0].attrs.width;
+        height = components[0].attrs.height;
+        images = image_list[1].items; // 1 index for hangers;
+        layer_to_choose = layer;
+        name = "hanger_img";
+        target = '.hanger';
+        console.log("populating hanger images");
+            break;
+      case 'handle':
+            components = stage.find(".door_img");
+            width = 10;
+            height = 30;
+            console.log("door_imgs:",components);
+            images = image_list[3].items; // 3 index for handles;
+            layer_to_choose = layer_front;
+            name = "handle_img";
+            target = '.door_img';
+            console.log("populating handle images");
+                break;
         case 'shelfs':
             break;
+        
+
 
     }
 
@@ -1151,7 +1207,7 @@ function images_populate(img) {
                 console.log("y position:", y);
                 // var drawer_parent = stage.find("#drawer_left")[0];
                 //S console.log("drawer:",drawer_parent);
-                Image_draw(this, 500, y, components[0].attrs.width, components[0].attrs.height, layer_to_choose, name, id, target);
+                Image_draw(this, 500, y, width, height, layer_to_choose, name, id, target);
             };
             y = y + components[0].attrs.height + 5;
 
@@ -1190,6 +1246,11 @@ function summarize(){
             summary.mid_drawer++;
 
         }
+        else if(drawer[i].attrs.side==='mid_2')
+        {
+            summary.mid_2_drawer++;
+
+        }
         else if(drawer[i].attrs.side==='right')
         {
             summary.right_drawer++;
@@ -1206,6 +1267,11 @@ function summarize(){
         else if(shelf[i].attrs.side==='mid')
         {
             summary.mid_shelf++;
+
+        }
+        else if(shelf[i].attrs.side==='mid_2')
+        {
+            summary.mid_2_shelf++;
 
         }
         else if(shelf[i].attrs.side==='right')
@@ -1251,7 +1317,7 @@ function destroy_images(){
   //  console.log(images);
     for(var i=0; i< images.length ; i++ )
     {
-        if((images[i].attrs.id !='na_mid_img' ||
+        if((images[i].attrs.id !='na_mid_img' || images[i].attrs.id !='na_2_mid_img' ||
         images[i].attrs.id !='na_left_img' ||
         images[i].attrs.id !='na_right_img') && images[i].attrs.parent ==="" ) 
         {
