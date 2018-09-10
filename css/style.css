@@ -222,17 +222,44 @@
 #build{
     background: linear-gradient( to right, rgb(124, 120, 141), rgb(170, 177, 153));
     width: 100%;
-    height: 20em;
-    padding-top: 6em;
+    height: 23em;
+    padding-top: 3em;
 }
 
-#build > button {
-    width: 8em;
-    height: 3em;
-    font-size: 24px;
+#build  h2  {
+    font-size: 3em;
     font-weight: lighter;
-    background-color: rgb(230, 219, 204);
-    color: rgb(44, 43, 43);
+}
+ a {
+    text-decoration: none;
+}
+
+.customBtn1{
+    display: block;
+    position: relative;
+    height: 3.5em;
+    width: 10.5em;
+    background-color: #5477a5 !important;
+    /* margin: 0 auto; */
+    font-size: 20px !important;
+    margin-top: 1.8em;
+}
+
+
+/* #build .customBtn :hover {
+    display: block;
+    position: relative;
+    height: 3.5em;
+    width: 10.5em;
+    background-color: #1f242b;
+    margin: 0 auto;
+    font-size: 20px;
+} */
+
+
+.brush-font{
+    font-size: 18px;
+    /* margin-right: 2em; */
 }
 
 /* build end */
@@ -323,13 +350,102 @@ footer .line{
 
 /* Product & Feature Page  */
 
-#header-img{
+.responsive-image {
     background-image: url(../assets/img/room-1336497_1280.jpg);
-    display: block;
-    position: relative;
+  }
+
+  @media screen and (min-width: 320px) {
+    .responsive-image {
+      background-image: url(../assets/img/room-1336497_1280.jpg);
+    }
+  }
+  @media screen and (min-width: 640px)
+  {
+    .responsive-image {
+      background-image: url(../assets/img/room-1336497_1280.jpg);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .responsive-image {
+      background-image: url(../assets/img/room-1336497_1280.jpg);
+    }
+  }
+
+  .masthead {
+    overflow: hidden;
+    color: #FFF;
+    padding: 1em;
+    border-top: 6px solid #9BA800;
+    background-color: #404040;
     width: 100%;
-    height: 585px;
-}
+    height: 30em;
+  }
+  
+    .responsive-image {
+      background-position: center;
+      background-attachment: scroll;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+         -moz-background-size: cover;
+           -o-background-size: cover;
+              background-size: cover;
+    }
+  
+  
+  .masthead .entry-header {
+    margin: 9.5em 0 3.5em 0;
+    font-weight: 300;
+    line-height: 1.5;
+    overflow: auto;
+  }
+    @media screen and (min-width: 640px) {
+      margin: 15.5em 0 7.5em 0;
+    }
+  
+  
+  
+  .masthead .entry-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 4.5em;
+    line-height: 1;
+    font-weight: normal;
+    color: #347796;
+  }
+    @media screen and (min-width: 640px) {
+      max-width: 650px;
+      font-size: 4em;
+    }
+  
+  
+  
+  .masthead .entry-subtitle {
+    font-family: "freight-text-pro";
+    font-style: italic;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 0.35em;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+  }
+
+  .product-info{
+      margin: 8em 0 5em 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .product-info > h2 {
+      font-style: normal;
+      font-size: 3em;
+      font-weight: 100;
+      margin: 1em 0 0.3em 0;
+      color: rgb(37, 35, 35);
+  }
+
+  .product-info > h5 {
+      font-style: normal;
+      font-weight: lighter;
+      color: rgb(94, 92, 92);
+  }
 
 /* How to work page */
 .work-left-heading{
@@ -368,4 +484,29 @@ footer .line{
 
 .install-img-container{
     margin: 10px 0px 10px 0px;
+}
+
+.productTabs{
+    margin: 5em;
+}
+
+.color-tag-heading{
+    font-weight: lighter;
+    margin: 0 0 1.5em 1em;
+}
+
+.color-img{
+    border: 1px solid rgb(179, 176, 176);
+}
+
+.color-name{
+    margin-top: 0.8em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(92, 88, 88);
+}
+
+.doNdra-name{
+    margin-top: 0.8em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(92, 88, 88);
 }

@@ -38,16 +38,11 @@
                     <a class="nav-link" href="../index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="product.html">Product & Features</a>
                 </li>
 
             </ul>
             <!-- Links -->
-
-
 
             <!-- Links -->
             <ul class="navbar-nav">
@@ -434,9 +429,13 @@ document.getElementById("closet-select").style.display="none";
    document.getElementById("door_select_mid_container").style.display="none";
    document.getElementById("door_select_mid_2_container").style.display="none";
     document.getElementById("drawer_mid_container").style.display="none";
-    document.getElementById("drawer_mid_container").setAttribute("class" ,"col-md-6");
+    var removeClassMidCont = document.getElementById("drawer_mid_container").removeAttribute("class")
+    removeClassMidCont.setAttribute("class", "col-md-6")
+    // document.getElementById("drawer_mid_container").setAttribute("class" ,"col-md-6");
     document.getElementById("drawer_mid_2_container").style.display="none";
-    document.getElementById("drawer_mid_2_container").setAttribute("class" ,"col-md-6");
+    var removeClassMid_2_Cont = document.getElementById("drawer_mid_2_container").removeAttribute("class");
+    removeClassMid_2_Cont.setAttribute("class", "col-md-6");
+    // document.getElementById("drawer_mid_2_container").setAttribute("class" ,"col-md-6");
 
 
       break;
